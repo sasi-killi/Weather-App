@@ -136,14 +136,18 @@ class App extends Component {
               </p>
             </div>
             <div className="key-data">
-              <p>{this.state.weatherData.city}</p>
-              <div className="icon">
-                <img src={icon} alt="weather-icon"></img>
+              <div className="city">
+                <p>{this.state.weatherData.city}</p>
+                <p>
+                  <span>{this.state.weatherData.timeStamp}</span>
+                </p>
               </div>
-              <p>
-                <span>{this.state.weatherData.timeStamp}</span>
-              </p>
-              <p>{this.state.weatherData.weatherDescription}</p>
+              <div className="weather-description">
+                <div className="icon">
+                  <img src={icon} alt="weather-icon"></img>
+                </div>
+                <p>{this.state.weatherData.weatherDescription}</p>
+              </div>
             </div>
           </div>
         </div>

@@ -135,32 +135,6 @@ body{
   font-size: 0.5em;
 }
 
-.key-data{
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 3.2em;
-}
-
-.key-data p{
-  font-size: 1em;
-}
-
-.key-data p:first-child{
-  font-size: 3em;
-  font-weight: 600;
-  display: flex;
-  align-items: flex-end;
-}
-
-.icon{
-  display: flex;
-  align-items: flex-end;
-}
-.row span:nth-child(2){
-  margin-left: auto;
-  color: white;
-}
-
 @media screen and (max-width: 700px) {
   .App{
     flex-wrap: wrap;
@@ -175,4 +149,23 @@ body{
   .temp-box{
     flex-wrap: wrap;
   }
+}
+
+@media screen and (max-width:420px) {
+  .key-data{
+    flex-flow: row wrap;
+  }
+}
+
+.key-data{
+  display: flex;
+  align-items: center;
+}
+
+.city p:first-child{
+  font-size: 3em;
+  font-weight: 800;
+}
+.weather-description{
+  margin-left: 3em;
 }
