@@ -96,6 +96,10 @@ body{
   margin: 2em 0px;
   font-weight: 500;
   display: flex;
+  justify-content: space-between;
+}
+p.row span:nth-child(2){
+  color: white;
 }
 .weather-data{
   margin: 2em 3em;
@@ -122,50 +126,41 @@ body{
   align-self: flex-end;
   display: flex;
   color: white;
+  width: 100%;
+  align-items: center;
 }
 .temperature{
   display: flex;
   font-size: 8em;
   font-weight: 800;
   align-items: flex-end;
-  margin-right: 0.3em;
 }
 
 .temperature p sup{
   font-size: 0.5em;
 }
 
-@media screen and (max-width: 700px) {
+.city{
+  margin: 2em;
+}
+.city p:first-child{
+  font-size: 3em;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 950px) {
   .App{
     flex-wrap: wrap;
   }
   .display{
     width: 100%;
-    padding: 1em;
+    padding: 1em 0px;
   }
   .blur{
     width: 100%;
   }
   .temp-box{
     flex-wrap: wrap;
+    justify-content: center;
   }
-}
-
-@media screen and (max-width:420px) {
-  .key-data{
-    flex-flow: row wrap;
-  }
-}
-
-.key-data{
-  display: flex;
-  align-items: center;
-}
-
-.city p:first-child{
-  font-size: 3em;
-  font-weight: 800;
-}
-.weather-description{
-  margin-left: 3em;
 }
