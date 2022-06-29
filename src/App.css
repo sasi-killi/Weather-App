@@ -1,38 +1,148 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+*{
+    margin: 0px;
   }
+
+body{
+    background-color: aquamarine;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/rainy.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.App-link {
-  color: #61dafb;
+.blur{
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    margin-left: auto;
+    backdrop-filter: blur(20px);
+    justify-content: space-around;
+}
+.search-container{
+    display: flex;
+    width: 100%;
+}
+.search-bar-container{
+    display: flex;
+    width: 100%;
+}
+.search-bar{
+    width: 100%;
+    height: 50%;
+    align-self: flex-end;
+    margin : 0px 2em;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #9C9FA1;
+    background-color: transparent;
+    font-size: 1em;
+}
+.font-color{
+    color: #9DA0A2;
+}
+.search-icon-container{
+    margin-left: auto;
+    padding: 1em;
+    background-color: #829F9A;
+}
+.search-history{
+    border-bottom: 1px solid #9C9FA1;
+    margin: 0.5em 2em;
+}
+.row{
+    margin: 2em 0px;
+}
+.weather-data{
+    margin: 2em 2em;
+    border-bottom: 1px solid #9C9FA1;
+}
+.weather-data h3{
+    color: #e6e6e6;
+    
+}
+.empty::after{
+    content: "";
+    display: block;
+    height: 118px
+}
+.display{
+    width: 60%;
+    padding: 5em 4em;
+    display: flex;
+}
+.temp-box{
+    height: 8em;
+    align-self: flex-end;
+    display: flex;
+    color: white;
+}
+.temperature{
+    display: flex;
+    font-size: 8em;
+    align-items: flex-end;
+    margin-right: 0.4em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.temperature p sup{
+    font-size: 0.5em;
+}
+
+.key-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.2em;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+.key-data p{
+    font-size: 1em;
 }
+
+.key-data p:first-child{
+    font-size: 4em;
+}
+
+
+/*.city{
+    display: flex;
+    flex-direction: column;
+}
+.city p:first-child{
+    font-size: 4em;
+}
+.city p:nth-child(2), .weather-type p{
+    font-size: 1em;
+}
+.weather-type{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather-type img{
+    display: block;
+}
+.space{
+    margin: 0px 1em;
+}*/
+
+
+
+/*<div className="city space">
+              <p>London</p>
+              <span>
+                <span>time</span>
+                <span>date</span>
+              </span>
+            </div>
+            <div className="weather-type space">
+              <img
+                src="http://openweathermap.org/img/w/04d.png"
+                alt="weather-icon"
+              ></img>
+              <p>Rainy</p>
+            </div>*/

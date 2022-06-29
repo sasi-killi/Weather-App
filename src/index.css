@@ -1,13 +1,178 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  margin: 0px;
+}
+html{
+  font-family: 'Roboto', sans-serif;
+}
+body{
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+.App{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-image: url(./images/cloudy.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.rainy{
+  background-image: url(./images/rainy.jpg);
+}
+
+.sunny{
+  background-image: url(./images/sunny.jpg);
+}
+
+.haze{
+  background-image: url(./images/haze.jpg);
+}
+
+.cloud{
+  background-image: url(./images/cloudy.jpg);
+}
+
+.clearsky{
+  background-image: url(./images/clearsky.jpg);
+}
+
+.thunder{
+  background-image: url(./images/thunder.jpg);
+}
+
+.generic{
+  background-image: url(./images/generic.jpg);
+}
+
+.blur{
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  margin-left: auto;
+  backdrop-filter: blur(80px);
+}
+.search-container{
+  display: flex;
+  width: 100%;
+}
+.search-bar-container{
+  display: flex;
+  width: 100%;
+}
+.search-bar{
+  width: 100%;
+  height: 50%;
+  align-self: flex-end;
+  margin : 0px 3em;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #9C9FA1;
+  background-color: transparent;
+  font-size: 1em;
+}
+.search-bar:focus{
+  color: white;
+}
+.font-color{
+  color: #9DA0A2;
+}
+.search-icon-container{
+  margin-left: auto;
+  padding: 1em;
+  background-color: #829F9A;
+  cursor: pointer;
+}
+.search-history{
+  border-bottom: 1px solid #9C9FA1;
+  margin: 0.5em 3em;
+}
+.search-history p:hover{
+  cursor: pointer;
+}
+.row{
+  margin: 2em 0px;
+  font-weight: 500;
+  display: flex;
+}
+.weather-data{
+  margin: 2em 3em;
+  border-bottom: 1px solid #9C9FA1;
+}
+.weather-data h3{
+  color: #e6e6e6;
+}
+.empty{
+  height: 112px;
+  text-align: center;
+}
+.empty P{
+  font-size: 3em;
+  margin-top: 0.2em;
+}
+.display{
+  width: 60%;
+  padding: 5em 4em;
+  display: flex;
+}
+.temp-box{
+  height: auto;
+  align-self: flex-end;
+  display: flex;
+  color: white;
+}
+.temperature{
+  display: flex;
+  font-size: 8em;
+  font-weight: 800;
+  align-items: flex-end;
+  margin-right: 0.3em;
+}
+
+.temperature p sup{
+  font-size: 0.5em;
+}
+
+.key-data{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 3.2em;
+}
+
+.key-data p{
+  font-size: 1em;
+}
+
+.key-data p:first-child{
+  font-size: 3em;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+}
+
+.icon{
+  display: flex;
+  align-items: flex-end;
+}
+.row span:nth-child(2){
+  margin-left: auto;
+  color: white;
+}
+
+@media screen and (max-width: 700px) {
+  .App{
+    flex-wrap: wrap;
+  }
+  .display{
+    width: 100%;
+    padding: 1em;
+  }
+  .blur{
+    width: 100%;
+  }
+  .temp-box{
+    flex-wrap: wrap;
+  }
 }
