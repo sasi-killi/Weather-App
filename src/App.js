@@ -15,12 +15,13 @@ class App extends Component {
       wind: "0m/sec",
     },
     recentSearch: ["Birmingham", "Manchester", "New York", "California"],
+    indicator: false,
   };
 
   formateDate = (date) => {
-    let hr = date.getHours() + 1;
+    let hr = date.getHours();
     let min =
-      date.getMinutes().toString().length === 1
+      date.getMinutes().toString().length == 1
         ? +`0${date.getMinutes()}`
         : date.getMinutes();
     let day = date.getDay();
@@ -56,17 +57,15 @@ class App extends Component {
   };
 
   handleFetch = async (e) => {
-    e.preventDefault();
+    if (!this.state.indicator) e.preventDefault();
     const timeStamp = this.formateDate(new Date());
-    const city = this.state.inputValue;
+    const city = this.state.inputValue.trim();
     const API_KEY = "4d28f02b3d251cabd33de10f4c06c895";
-    console.log(city);
 
     let response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},356&appid=${API_KEY}`
     );
     const weatherdata = await response.json();
-    console.log(weatherdata);
     if (weatherdata.cod === 200) {
       this.setState({
         weatherData: {
@@ -80,6 +79,7 @@ class App extends Component {
           wind: weatherdata.wind.speed + "m/sec",
         },
         recentSearch: [...this.state.recentSearch, city],
+        indicator: false,
       });
     } else {
       alert(weatherdata.message);
@@ -87,16 +87,16 @@ class App extends Component {
   };
 
   handleChange = (e) => {
-    this.setState({ inputValue: e.target.value.trim() });
+    this.setState({ inputValue: e.target.value, indicator: false });
   };
 
   updateInput = (e) => {
-    this.setState({ inputValue: e.target.textContent });
+    this.flag = true;
+    this.setState({ inputValue: e.target.textContent, indicator: true });
   };
 
   determineClass = () => {
     const str = this.state.weatherData.weatherDescription.toLowerCase();
-    console.log(str);
     if (str.indexOf("rain") !== -1) {
       return "App rainy";
     } else if (str.indexOf("cloud") !== -1) {
@@ -113,7 +113,7 @@ class App extends Component {
       return "App generic";
     }
   };
-
+  flag = true;
   render() {
     const icon = `http://openweathermap.org/img/w/${this.state.weatherData.icon}.png`;
     let recentSearch = this.state.recentSearch;
@@ -125,6 +125,10 @@ class App extends Component {
       }
       this.setState({ recentSearch: recentSearch });
     }
+    if (this.state.indicator && this.flag) {
+      this.flag = !this.flag;
+      this.handleFetch();
+    }
     return (
       <div className={this.determineClass()}>
         <div className="display">
@@ -135,19 +139,18 @@ class App extends Component {
                 <sup>&deg;</sup>
               </p>
             </div>
-            <div className="key-data">
-              <div className="city">
-                <p>{this.state.weatherData.city}</p>
-                <p>
-                  <span>{this.state.weatherData.timeStamp}</span>
-                </p>
+
+            <div className="city">
+              <p>{this.state.weatherData.city}</p>
+              <p>
+                <span>{this.state.weatherData.timeStamp}</span>
+              </p>
+            </div>
+            <div className="weather-description">
+              <div className="icon">
+                <img src={icon} alt="weather-icon"></img>
               </div>
-              <div className="weather-description">
-                <div className="icon">
-                  <img src={icon} alt="weather-icon"></img>
-                </div>
-                <p>{this.state.weatherData.weatherDescription}</p>
-              </div>
+              <p>{this.state.weatherData.weatherDescription}</p>
             </div>
           </div>
         </div>
