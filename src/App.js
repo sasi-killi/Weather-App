@@ -19,11 +19,15 @@ class App extends Component {
   };
 
   formateDate = (date) => {
-    let hr = date.getHours();
+    let hr =
+      date.getHours().toString().length == 1
+        ? `0${date.getHours()}`
+        : date.getHours();
     let min =
       date.getMinutes().toString().length == 1
-        ? +`0${date.getMinutes()}`
+        ? `0${date.getMinutes()}`
         : date.getMinutes();
+    console.log(min);
     let day = date.getDay();
     let num = date.getDate();
     let month = date.getMonth();
@@ -56,16 +60,25 @@ class App extends Component {
     return timeStamp;
   };
 
+  getTimeZoneDate = (utc_offset) => {
+    let date = new Date();
+    let offset = date.getTimezoneOffset() * 60 * 1000;
+    let utc = date.getTime() + offset;
+    let timeStamp = utc + utc_offset;
+    return new Date(timeStamp);
+  };
+
   handleFetch = async (e) => {
     if (!this.state.indicator) e.preventDefault();
-    const timeStamp = this.formateDate(new Date());
     const city = this.state.inputValue.trim();
     const API_KEY = "4d28f02b3d251cabd33de10f4c06c895";
-
     let response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},356&appid=${API_KEY}`
     );
     const weatherdata = await response.json();
+    console.dir(weatherdata);
+    let date = this.getTimeZoneDate(weatherdata.timezone * 1000);
+    const timeStamp = this.formateDate(date);
     if (weatherdata.cod === 200) {
       this.setState({
         weatherData: {
